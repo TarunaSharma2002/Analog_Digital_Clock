@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADCLOCKandCALENDER</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <header>
+
+        <div id="background-wrap">
+            <div class="bubble x1"></div>
+            <div class="bubble x2"></div>
+            <div class="bubble x3"></div>
+            <div class="bubble x4"></div>
+            <div class="bubble x5"></div>
+            <div class="bubble x6"></div>
+            <div class="bubble x7"></div>
+            <div class="bubble x8"></div>
+            <div class="bubble x9"></div>
+            <div class="bubble x10"></div>
+        </div>
+
+        <div id="clockContainer">
+            <div id="hour"></div>
+            <div id="minute"></div>
+            <div id="second"></div>
+        </div>
+
+
+        <div class="calendar">
+            <div class="calendar-body">
+                <span class="month-name">Month</span>
+                <span class="day-name">Day</span>
+                <span class="date-number">00</span>
+                <span class="year">0000</span>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            const dayNumber = new Date().getDate();
+            const year = new Date().getFullYear();
+            const dayName = new Date().toLocaleString("default", {
+                weekday: "long"
+            });
+            const monthName = new Date().toLocaleString("default", {
+                month: "long"
+            });
+
+            document.querySelector(".month-name").innerHTML = monthName;
+            document.querySelector(".day-name").innerHTML = dayName;
+            document.querySelector(".date-number").innerHTML = dayNumber;
+            document.querySelector(".year").innerHTML = year;
+        </script>
+
+
+        <script type="text/javascript">
+            var clock = setInterval(clocktimimg, 1000)
+
+            function clocktimimg() {
+                var d = new Date();
+                var n = d.toLocaleTimeString();
+                document.getElementaryId('showClock').innerHTML = n;
+
+            }
+        </script>
+
+        <div class="container">
+
+            <div class="box">
+                <div class="hours">
+                    <h1 id="hours">8</h1>
+                </div>
+                <h1>hours</h1>
+            </div>
+
+
+            <div class="box">
+                <div class="minutes">
+                    <h1 id="minutes">8</h1>
+                </div>
+                <h1>minutes</h1>
+            </div>
+
+
+            <div class="box">
+                <div class="seconds">
+                    <h1 id="seconds">8</h1>
+                </div>
+                <h1>seconds</h1>
+            </div>
+
+            <div class="box">
+                <div class="amorpm">
+                    <h1 id="amorpm">8</h1>
+                </div>
+                <h1>am or pm</h1>
+            </div>
+
+
+
+        </div>
+
+        <script>
+            let digitalClock = () => {
+
+                let date = new Date();
+
+                let hours = date.getHours();
+                let minutes = date.getMinutes();
+                let seconds = date.getSeconds();
+
+                let amorpm = hours >= 12 ? 'pm' : 'am';
+
+
+
+
+
+
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
+                document.getElementById("amorpm").innerHTML = amorpm;
+
+                setTimeout(digitalClock, 500);
+
+            }
+
+            digitalClock();
+        </script>
+
+
+    </header>
+</body>
+
+</html>
